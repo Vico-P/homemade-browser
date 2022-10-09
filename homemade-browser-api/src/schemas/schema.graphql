@@ -1,0 +1,5 @@
+scalar JSON
+
+type Query {
+  search(textSearch: String!, imageMode: Boolean): Result
+}
