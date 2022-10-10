@@ -34,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint . --ext .tsx",
+    "lint": "npx eslint . --ext .tsx,.ts",
     "lint:fix": "npm run lint -- --fix"
   },
   "eslintConfig": {
