@@ -9,5 +9,6 @@
     "moduleResolution": "node",
     "rootDir": "src",
     "outDir": "build"
+    // "typeRoots": ["./src/types/", "./node_modules/@types"]
   }
 }
