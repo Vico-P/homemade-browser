@@ -1,5 +1,5 @@
 scalar JSON
 
 type Query {
-  search(textToSearch: String!, imageMode: Boolean): [Result]
+  search(textToSearch: String!, page: Int!, imageMode: Boolean): Research!
 }
