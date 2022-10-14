@@ -7,8 +7,14 @@ import { GoogleItems } from "../../types/types";
 const SearchBar: () => JSX.Element = () => {
   const [valueInput, setValueInput] = useState<string>("");
   const [textToSearch, setTextToSearch] = useState<string>("");
-  const { setResearchResult, pageNumber, setNbHits } =
-    useContext(ResearchContext);
+  const {
+    setResearchResult,
+    pageNumber,
+    setNbHits,
+    setShow,
+    setRefreshedResult,
+    setPageNumber,
+  } = useContext(ResearchContext);
   const { loading, data } = useQuery<{
     search: {
       nbHits: number;
@@ -23,11 +29,23 @@ const SearchBar: () => JSX.Element = () => {
   });
 
   useEffect(() => {
-    if (!loading) {
-      setResearchResult(data?.search.results ?? []);
-      setNbHits(data?.search.nbHits ?? 0);
+    if (textToSearch) {
+      setShow(false);
     }
-  }, [data, pageNumber]);
+  }, [textToSearch]);
+
+  useEffect(() => {
+    setRefreshedResult(false);
+  }, [pageNumber]);
+
+  useEffect(() => {
+    if (!loading && data) {
+      setResearchResult(data.search.results ?? []);
+      setNbHits(data?.search.nbHits ?? 0);
+      setTimeout(() => setShow(true), 1000);
+      setTimeout(() => setRefreshedResult(true), 1000);
+    }
+  }, [data]);
 
   return (
     <div>
@@ -41,6 +59,7 @@ const SearchBar: () => JSX.Element = () => {
         type="button"
         onClick={() => {
           setTextToSearch(valueInput);
+          setPageNumber(1);
         }}
       >
         Go

@@ -8,6 +8,10 @@ const ResearchContext = createContext({
   setNbHits: (newValue: number) => {},
   pageNumber: 1,
   setPageNumber: (newValue: number) => {},
+  show: true,
+  setShow: (newValue: boolean) => {},
+  refreshedResult: true,
+  setRefreshedResult: (newValue: boolean) => {},
 });
 
 const ResearchProvider: (props: { children: JSX.Element }) => JSX.Element = ({
@@ -16,6 +20,8 @@ const ResearchProvider: (props: { children: JSX.Element }) => JSX.Element = ({
   const [researchResult, setResearchResult] = useState<GoogleItems[]>([]);
   const [nbHits, setNbHits] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
+  const [show, setShow] = useState<boolean>(true);
+  const [refreshedResult, setRefreshedResult] = useState<boolean>(false);
 
   return (
     <ResearchContext.Provider
@@ -27,6 +33,10 @@ const ResearchProvider: (props: { children: JSX.Element }) => JSX.Element = ({
         setNbHits: (newValue: number) => setNbHits(newValue),
         pageNumber,
         setPageNumber: (newValue: number) => setPageNumber(newValue),
+        show,
+        setShow: (newValue: boolean) => setShow(newValue),
+        refreshedResult,
+        setRefreshedResult: (newValue: boolean) => setRefreshedResult(newValue),
       }}
     >
       {children}
