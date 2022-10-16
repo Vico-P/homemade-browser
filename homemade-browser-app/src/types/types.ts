@@ -6,4 +6,11 @@ interface GoogleItems {
   htmlSnippet: string;
 }
 
+enum DisplayMode {
+  CENTER = "CENTER",
+  HEADBAND = "HEADBAND",
+}
+
+export { DisplayMode };
+
 export type { GoogleItems };

@@ -1,10 +1,11 @@
 import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./assets/css/index.css";
+import "antd/dist/antd.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import { ResearchProvider } from "./context/ResearchContext";
-import "antd/dist/antd.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
