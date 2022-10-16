@@ -5,6 +5,7 @@ import Result from "./components/Result";
 import { Pagination, Tabs, Space, Card } from "antd";
 import QueueAnim from "rc-queue-anim";
 import { FileImageOutlined, SearchOutlined } from "@ant-design/icons";
+import { SearchType } from "./types/types";
 
 const App: () => JSX.Element = () => {
   const {
@@ -15,6 +16,7 @@ const App: () => JSX.Element = () => {
     show,
     refreshedResult,
     launchedResearchOnce,
+    setSearchType,
   } = useContext(ResearchContext);
 
   const items = [
@@ -25,7 +27,7 @@ const App: () => JSX.Element = () => {
           Tous
         </Space>
       ),
-      key: "search",
+      key: SearchType.SEARCH_TYPE_UNDEFINED,
       children: (
         <div key="results" style={{ marginLeft: 135 }}>
           <QueueAnim duration={3000}>
@@ -49,7 +51,7 @@ const App: () => JSX.Element = () => {
           Images
         </Space>
       ),
-      key: "images",
+      key: SearchType.IMAGE,
       children: (
         <div key="results apply-padding">
           <QueueAnim duration={3000}>
@@ -76,7 +78,17 @@ const App: () => JSX.Element = () => {
                 <div key="searchbar" className="w-100">
                   <SearchBar />
                 </div>,
-                <div key="tabs">{nbHits >= 0 && <Tabs items={items} />}</div>,
+                <div key="tabs">
+                  {nbHits >= 0 && (
+                    <Tabs
+                      items={items}
+                      onChange={(tabKey) => {
+                        setSearchType(tabKey as SearchType);
+                        setPageNumber(1);
+                      }}
+                    />
+                  )}
+                </div>,
                 <div
                   key="pagination"
                   className="col-12 d-flex justify-content-center"

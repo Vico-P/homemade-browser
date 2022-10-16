@@ -7,7 +7,7 @@ const resolvers = {
       parent: any,
       args: {
         textToSearch: string;
-        imageMode: boolean | undefined;
+        searchType: SearchType;
         page: number;
       },
       context: {
@@ -21,9 +21,7 @@ const resolvers = {
       //   q: args.textToSearch,
       //   key: context.key,
       //   cx: context.searchEngineId,
-      //   searchType: args.imageMode
-      //     ? SearchType.IMAGE
-      //     : SearchType.SEARCH_TYPE_UNDEFINED,
+      //   searchType: args.searchType,
       //   start: args.page * 10 - 9,
       // });
       // This is what we return to the subtype (here Result type of graphql) to process data in result type resolvers after

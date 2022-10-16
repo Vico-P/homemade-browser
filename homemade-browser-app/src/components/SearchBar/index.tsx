@@ -19,6 +19,7 @@ const SearchBar: () => JSX.Element = () => {
     setRefreshedResult,
     setPageNumber,
     setLaunchedResearchOnce,
+    searchType,
   } = useContext(ResearchContext);
   const { loading, data } = useQuery<{
     search: {
@@ -29,6 +30,7 @@ const SearchBar: () => JSX.Element = () => {
     variables: {
       textToSearch,
       pageNumber,
+      searchType,
     },
     skip: !textToSearch,
   });
@@ -45,7 +47,6 @@ const SearchBar: () => JSX.Element = () => {
 
   useEffect(() => {
     if (!loading && data) {
-      console.log("ON est ici");
       setResearchResult(data.search.results);
       setNbHits(data.search.nbHits);
       // We put a setTimeout to let the animation the time to play

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { GoogleItems } from "../../types/types";
+import { GoogleItems, SearchType } from "../../types/types";
 
 const ResearchContext = createContext({
   researchResult: [] as GoogleItems[],
@@ -14,6 +14,8 @@ const ResearchContext = createContext({
   setRefreshedResult: (newValue: boolean) => {},
   launchedResearchOnce: false,
   setLaunchedResearchOnce: (newValue: boolean) => {},
+  searchType: SearchType.SEARCH_TYPE_UNDEFINED,
+  setSearchType: (newValue: SearchType) => {},
 });
 
 const ResearchProvider: (props: { children: JSX.Element }) => JSX.Element = ({
@@ -26,6 +28,9 @@ const ResearchProvider: (props: { children: JSX.Element }) => JSX.Element = ({
   const [refreshedResult, setRefreshedResult] = useState<boolean>(false);
   const [launchedResearchOnce, setLaunchedResearchOnce] =
     useState<boolean>(false);
+  const [searchType, setSearchType] = useState<SearchType>(
+    SearchType.SEARCH_TYPE_UNDEFINED
+  );
 
   return (
     <ResearchContext.Provider
@@ -44,6 +49,8 @@ const ResearchProvider: (props: { children: JSX.Element }) => JSX.Element = ({
         launchedResearchOnce,
         setLaunchedResearchOnce: (newValue: boolean) =>
           setLaunchedResearchOnce(newValue),
+        searchType,
+        setSearchType: (newValue: SearchType) => setSearchType(newValue),
       }}
     >
       {children}

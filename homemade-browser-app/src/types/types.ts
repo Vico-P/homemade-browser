@@ -11,6 +11,11 @@ enum DisplayMode {
   HEADBAND = "HEADBAND",
 }
 
-export { DisplayMode };
+enum SearchType {
+  SEARCH_TYPE_UNDEFINED = "SEARCH_TYPE_UNDEFINED",
+  IMAGE = "IMAGE",
+}
+
+export { DisplayMode, SearchType };
 
 export type { GoogleItems };
