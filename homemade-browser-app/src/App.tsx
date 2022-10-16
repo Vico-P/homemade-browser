@@ -29,19 +29,21 @@ const App: () => JSX.Element = () => {
       ),
       key: SearchType.SEARCH_TYPE_UNDEFINED,
       children: (
-        <div key="results" style={{ marginLeft: 135 }}>
-          <QueueAnim duration={3000}>
-            {refreshedResult
-              ? [
-                  ...researchResult.map((item, index) => (
-                    <div key={`result${index}`}>
-                      <Result key={index} {...item} />
-                    </div>
-                  )),
-                ]
-              : null}
-          </QueueAnim>
-        </div>
+        <QueueAnim
+          duration={3000}
+          key="results"
+          style={{ paddingLeft: 135, paddingRight: 135 }}
+        >
+          {refreshedResult
+            ? [
+                ...researchResult.map((item, index) => (
+                  <div key={`result${index}`}>
+                    <Result key={index} {...item} />
+                  </div>
+                )),
+              ]
+            : null}
+        </QueueAnim>
       ),
     },
     {
@@ -53,19 +55,22 @@ const App: () => JSX.Element = () => {
       ),
       key: SearchType.IMAGE,
       children: (
-        <div key="results apply-padding">
-          <QueueAnim duration={3000}>
-            {refreshedResult
-              ? [
-                  ...researchResult.map((item, index) => (
-                    <div key={`result${index}`}>
-                      <Card key={index} />
-                    </div>
-                  )),
-                ]
-              : null}
-          </QueueAnim>
-        </div>
+        <QueueAnim
+          duration={3000}
+          key="resultsImg"
+          className="col-12 row"
+          style={{ paddingLeft: 135, paddingRight: 135 }}
+        >
+          {refreshedResult
+            ? [
+                ...researchResult.map((item, index) => (
+                  <div key={`resultImg${index}`} className="col-4 mb-2">
+                    <Card key={index} />
+                  </div>
+                )),
+              ]
+            : null}
+        </QueueAnim>
       ),
     },
   ];
