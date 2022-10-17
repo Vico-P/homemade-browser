@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import SearchBar from "./components/SearchBar";
 import { ResearchContext } from "./context/ResearchContext";
 import SearchResult from "./components/SearchResult";
-import { Pagination, Tabs, Space, Card } from "antd";
+import { Pagination, Tabs, Space } from "antd";
 import QueueAnim from "rc-queue-anim";
 import { FileImageOutlined, SearchOutlined } from "@ant-design/icons";
 import { SearchType } from "./types/types";
+import ImageResult from "./components/ImageResult";
 
 const App: () => JSX.Element = () => {
   const {
@@ -59,13 +60,17 @@ const App: () => JSX.Element = () => {
           duration={3000}
           key="resultsImg"
           className="col-12 row"
-          style={{ paddingLeft: 135, paddingRight: 135 }}
+          style={{ paddingLeft: 15, paddingRight: 15 }}
         >
           {refreshedResult
             ? [
                 ...researchResult.map((item, index) => (
-                  <div key={`resultImg${index}`} className="col-4 mb-2">
-                    <Card key={index} />
+                  <div
+                    key={`resultImg${index}`}
+                    className="mb-2"
+                    style={{ width: "auto" }}
+                  >
+                    <ImageResult key={index} {...item} />
                   </div>
                 )),
               ]
