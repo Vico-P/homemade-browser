@@ -1,5 +1,3 @@
-scalar JSON
-
 type Result {
   link: String!
   title: String!
