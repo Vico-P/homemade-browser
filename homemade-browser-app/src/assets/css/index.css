@@ -32,3 +32,11 @@ code {
 .anticon > svg {
   margin-top: -6px;
 }
+
+.underline:hover {
+  text-decoration: underline;
+}
+
+body {
+  height: auto !important;
+}

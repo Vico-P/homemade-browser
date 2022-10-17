@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import SearchBar from "./components/SearchBar";
 import { ResearchContext } from "./context/ResearchContext";
-import Result from "./components/Result";
+import SearchResult from "./components/SearchResult";
 import { Pagination, Tabs, Space, Card } from "antd";
 import QueueAnim from "rc-queue-anim";
 import { FileImageOutlined, SearchOutlined } from "@ant-design/icons";
@@ -38,7 +38,7 @@ const App: () => JSX.Element = () => {
             ? [
                 ...researchResult.map((item, index) => (
                   <div key={`result${index}`}>
-                    <Result key={index} {...item} />
+                    <SearchResult key={index} {...item} />
                   </div>
                 )),
               ]
@@ -107,6 +107,7 @@ const App: () => JSX.Element = () => {
                       total={nbHits}
                       showLessItems={true}
                       showSizeChanger={false}
+                      className="mb-4"
                     />
                   )}
                 </div>,
@@ -122,4 +123,4 @@ const App: () => JSX.Element = () => {
   );
 };
 
-export default App;
+export default React.memo(App);

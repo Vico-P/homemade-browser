@@ -15,8 +15,7 @@ const GET_SEARCH_RESULT = gql`
       results {
         link
         title
-        displayLink
-        snippet
+        htmlSnippet
       }
     }
   }
