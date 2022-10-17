@@ -1,6 +1,7 @@
 import { GoogleItems } from "../../types/types";
 import React, { useState } from "react";
-import { Card, Modal, Space, Typography } from "antd";
+import { Button, Card, Modal, Space, Typography } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 
 const ImageResult: (item: GoogleItems) => JSX.Element = ({
   link,
@@ -59,7 +60,7 @@ const ImageResult: (item: GoogleItems) => JSX.Element = ({
         title={null}
         onCancel={() => setShowModal(false)}
         closable={false}
-        width={700}
+        width={600}
       >
         <div className="col-12 row">
           <div style={{ maxWidth: width, display: "inline-block" }}>
@@ -79,32 +80,39 @@ const ImageResult: (item: GoogleItems) => JSX.Element = ({
           <div
             className="d-flex flex-columns align-items-center justify-content-center"
             style={{
-              maxWidth:
-                // TODO Rework this computation
-                700 - 125 - width - 25 > 200
-                  ? 200
-                  : 700 - 125 - width - 10 - 25,
               display: "inline-block",
-              marginLeft: 125,
+              position: "absolute",
+              width: 600 - width - 25 > 300 ? 300 : 600 - width - 25,
+              right: 0,
+              height: "80%",
             }}
           >
             <Space direction="vertical">
               <Typography.Title
                 level={4}
                 style={{
-                  // TODO Rework this computation
-                  width: 700 - 125 - width > 200 ? 200 : 700 - 125 - width - 10,
+                  width: 600 - width - 25 > 300 ? 300 : 600 - width - 25,
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                   height: 25,
+                  textAlign: "center",
                 }}
               >
                 {title}
               </Typography.Title>
-              <Typography.Paragraph>
-                {imgRealWidth} X {imgRealHeight}
+              <Typography.Paragraph className="col-12 d-flex justify-content-center">
+                {imgRealWidth} X {imgRealHeight}{" "}
               </Typography.Paragraph>
+              <div className="col-12 d-flex justify-content-center">
+                <Button
+                  type="primary"
+                  shape="round"
+                  icon={<DownloadOutlined />}
+                >
+                  Telecharger
+                </Button>
+              </div>
             </Space>
           </div>
         </div>
