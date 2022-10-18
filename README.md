@@ -1,2 +1,2 @@
-# homemade-browser
-A home made browser to search content on internet using Google API 
+# homemade-search-engine
+A home made search engine to search content on internet using Google API 
