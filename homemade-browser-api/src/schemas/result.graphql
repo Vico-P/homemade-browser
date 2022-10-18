@@ -1,6 +1,7 @@
-scalar JSON
-
 type Result {
   link: String!
   title: String!
+  displayLink: String!
+  snippet: String!
+  htmlSnippet: String!
 }

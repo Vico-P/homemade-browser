@@ -1,13 +1,12 @@
+import { GoogleItems } from "../types/google.types";
+
 const resolvers = {
   Result: {
-    title: (parent: any, args: any, context: any, info: any) => {
-      console.log("Title resolver : ", parent, args);
-      return "test title";
-    },
-    link: (parent: any, args: any, context: any, info: any) => {
-      console.log("Link resolver : ", parent, args);
-      return "test link";
-    },
+    title: ({ title }: GoogleItems) => title,
+    link: ({ link }: GoogleItems) => link,
+    displayLink: ({ displayLink }: GoogleItems) => displayLink,
+    snippet: ({ snippet }: GoogleItems) => snippet,
+    htmlSnippet: ({ htmlSnippet }: GoogleItems) => htmlSnippet,
   },
 };
 
