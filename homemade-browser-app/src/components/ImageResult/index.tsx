@@ -2,6 +2,7 @@ import { GoogleItems } from "../../types/types";
 import React, { useState } from "react";
 import { Button, Card, Modal, Space, Typography } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
+import * as FileSaver from "file-saver";
 
 const ImageResult: (item: GoogleItems) => JSX.Element = ({
   link,
@@ -109,6 +110,12 @@ const ImageResult: (item: GoogleItems) => JSX.Element = ({
                   type="primary"
                   shape="round"
                   icon={<DownloadOutlined />}
+                  onClick={() => {
+                    FileSaver.saveAs(
+                      link,
+                      link.split("/")[link.split("/").length - 1].split("?")[0]
+                    );
+                  }}
                 >
                   Telecharger
                 </Button>
