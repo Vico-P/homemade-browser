@@ -1,4 +1,4 @@
-# API of homemade-browser
+# API of homemade-search-engine
 
 Techno used: Apollo Server and Graphql
 
