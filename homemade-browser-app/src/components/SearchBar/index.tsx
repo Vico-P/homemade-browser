@@ -2,8 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import GET_SEARCH_RESULT from "../../gql_query/GET_SEARCH_RESULT";
 import { useQuery } from "@apollo/client";
 import { ResearchContext } from "../../context/ResearchContext";
-import { DisplayMode, GoogleItems } from "../../types/types";
+import { DisplayMode, GoogleItems, SearchType } from "../../types/types";
 import { Input, Space } from "antd";
+import GET_IMAGE_RESULT from "../../gql_query/GET_IMAGE_RESULT";
 
 const SearchBar: () => JSX.Element = () => {
   const [valueInput, setValueInput] = useState<string>("");
@@ -26,7 +27,7 @@ const SearchBar: () => JSX.Element = () => {
       nbHits: number;
       results: GoogleItems[];
     };
-  }>(GET_SEARCH_RESULT, {
+  }>(searchType === SearchType.IMAGE ? GET_IMAGE_RESULT : GET_SEARCH_RESULT, {
     variables: {
       textToSearch,
       pageNumber,
