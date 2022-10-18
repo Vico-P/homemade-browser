@@ -1,6 +1,6 @@
 # API of homemade-browser
 
-Techno used -> Apollo Server and Graphql
+Techno used: Apollo Server and Graphql
 
 # How to start the server
 
