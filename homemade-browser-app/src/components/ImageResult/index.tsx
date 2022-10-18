@@ -61,7 +61,7 @@ const ImageResult: (item: GoogleItems) => JSX.Element = ({
         title={null}
         onCancel={() => setShowModal(false)}
         closable={false}
-        width={600}
+        width={width + 300 + 50}
       >
         <div className="col-12 row">
           <div style={{ maxWidth: width, display: "inline-block" }}>
@@ -74,7 +74,7 @@ const ImageResult: (item: GoogleItems) => JSX.Element = ({
               src={link}
               style={{
                 height: imgRealHeight < 0 ? "auto" : 200,
-                width: "auto",
+                width: width,
               }}
             />
           </div>
@@ -83,7 +83,7 @@ const ImageResult: (item: GoogleItems) => JSX.Element = ({
             style={{
               display: "inline-block",
               position: "absolute",
-              width: 600 - width - 25 > 300 ? 300 : 600 - width - 25,
+              width: 300,
               right: 0,
               height: "80%",
             }}
@@ -92,7 +92,7 @@ const ImageResult: (item: GoogleItems) => JSX.Element = ({
               <Typography.Title
                 level={4}
                 style={{
-                  width: 600 - width - 25 > 300 ? 300 : 600 - width - 25,
+                  width: 300,
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
