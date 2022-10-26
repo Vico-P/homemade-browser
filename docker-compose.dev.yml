@@ -1,0 +1,31 @@
+services:
+  front-end:
+    # Building image with Dockerfile in ./homemade-search-engine-app
+    build:
+      context: ./homemade-search-engine-app
+      # To use the development build specified in Dockerfile
+      target: development
+    # Start the front
+    command: npm start
+    ports:
+      - "3000:3000"
+    # Linking home-search-engine-app directory to container's app directory to make changes trigger a reloading of the app
+    volumes:
+      - ./homemade-search-engine-app:/app
+      # To make sure we don't link the node_modules in home-search-engine-app/ in the container's app directory
+      - /app/node_modules
+  back-end:
+    # Building image with Dockerfile in ./homemade-search-engine-api
+    build:
+      context: ./homemade-search-engine-api
+      # To use the development build specified in Dockerfile
+      target: development
+    # Start the server
+    command: npm run dev
+    ports:
+      - "4000:4000"
+    # Linking home-search-engine-api directory to container's app directory to make changes trigger a reloading of the app
+    volumes:
+      - ./homemade-search-engine-api:/app
+      # To make sure we don't link the node_modules in home-search-engine-api/ in the container's app directory
+      - /app/node_modules
