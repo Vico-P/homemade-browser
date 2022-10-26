@@ -6,8 +6,6 @@ WORKDIR /app
 COPY package.json .
 # Installing all dependencies
 RUN npm install
-# TODO Refactor to not make a move of .env.example to a .env file
-ADD ./.env.example ./.env
 # Copying sources
 COPY . .
 

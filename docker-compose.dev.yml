@@ -6,7 +6,8 @@ services:
       # To use the development build specified in Dockerfile
       target: development
     # Start the front
-    command: npm start
+    # TODO Refactor to not make a move of .env.example to a .env file
+    command: sh -c "cp .env.example .env && npm start"
     ports:
       - "3000:3000"
     # Linking home-search-engine-app directory to container's app directory to make changes trigger a reloading of the app
@@ -21,7 +22,8 @@ services:
       # To use the development build specified in Dockerfile
       target: development
     # Start the server
-    command: npm run dev
+    # TODO Refactor to not make a move of .env.example to a .env file
+    command: sh -c "cp .env.example .env && npm run dev"
     ports:
       - "4000:4000"
     # Linking home-search-engine-api directory to container's app directory to make changes trigger a reloading of the app
