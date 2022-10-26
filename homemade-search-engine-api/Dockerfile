@@ -6,12 +6,10 @@ WORKDIR /app
 COPY package.json .
 # Installing all dependencies
 RUN npm install
+# TODO Refactor to not make a move of .env.example to a .env file
+ADD ./.env.example ./.env
 # Copying sources
 COPY . .
-# TODO Refactor to not make a move of .env.example to a .env file
-RUN mv .env.example .env
-# Starting server
-RUN npm run dev
 
 # Production building
 FROM node:16.17.1 as production

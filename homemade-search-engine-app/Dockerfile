@@ -8,8 +8,6 @@ COPY package.json .
 RUN npm install
 # Copying sources
 COPY . .
-# Starting server
-RUN npm start
 
 # Production build
 FROM node:16.17.1 as production
