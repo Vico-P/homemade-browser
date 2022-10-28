@@ -1,0 +1,39 @@
+services:
+  front-end:
+    # To tell which env values we need to take for the start of the container
+    env_file:
+      - ./homemade-search-engine-app/.env
+    # Building image with Dockerfile in ./homemade-search-engine-app
+    build:
+      # To point which Dockerfile from which directory we want to use for this container
+      context: ./homemade-search-engine-app
+      # To use the development build specified in Dockerfile
+      target: development
+    # Start the front
+    command: sh -c "npm start"
+    ports:
+      - "3000:3000"
+    # Linking home-search-engine-app directory to container's app directory to make changes trigger a reloading of the app
+    volumes:
+      - ./homemade-search-engine-app:/app
+      # To make sure we don't link the node_modules in home-search-engine-app/ in the container's app directory
+      - /app/node_modules
+  back-end:
+    # To tell which env values we need to take for the start of the container
+    env_file:
+      - ./homemade-search-engine-api/.env
+    # Building image with Dockerfile in ./homemade-search-engine-api
+    build:
+      # To point which Dockerfile from which directory we want to use for this container
+      context: ./homemade-search-engine-api
+      # To use the development build specified in Dockerfile
+      target: development
+    # Start the server
+    command: sh -c "npm run dev"
+    ports:
+      - "4000:4000"
+    # Linking home-search-engine-api directory to container's app directory to make changes trigger a reloading of the app
+    volumes:
+      - ./homemade-search-engine-api:/app
+      # To make sure we don't link the node_modules in home-search-engine-api/ in the container's app directory
+      - /app/node_modules

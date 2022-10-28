@@ -1,0 +1,20 @@
+services:
+  front-end:
+    # Building image with Dockerfile in ./homemade-search-engine-app
+    build: ./homemade-search-engine-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # Going to retrieve value on .env file or directly in env values if .env don't exist
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+  back-end:
+    # Building image with Dockerfile in ./homemade-search-engine-api
+    build: ./homemade-search-engine-api
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      # Going to retrieve value on .env file or directly in env values if .env don't exist
+      - GOOGLE_SEARCH_API_KEY=${GOOGLE_SEARCH_API_KEY}
+      - GOOGLE_SEARCH_ENGINE_ID=${GOOGLE_SEARCH_ENGINE_ID}
