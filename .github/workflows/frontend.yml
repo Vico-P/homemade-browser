@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16.17.1"
+      - run: ls -a
       - run: cd ./homemade-search-engine-app
       - run: npm install
       - run: npm run lint
