@@ -18,6 +18,5 @@ jobs:
         with:
           node-version: "16.17.1"
       - run: cd ./homemade-search-engine-app
-      - run: |
-        npm install
-        npm run lint
+      - run: npm install
+      - run: npm run lint
