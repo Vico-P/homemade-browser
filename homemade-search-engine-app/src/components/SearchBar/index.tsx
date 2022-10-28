@@ -69,7 +69,7 @@ const SearchBar: () => JSX.Element = () => {
         <div className="col-4 d-flex justify-content-center mb-2">
           <Space direction="vertical">
             <img src="/icon192.png" className="mb-2" />
-            <label className="mb-2">Home made search engine22</label>
+            <label className="mb-2">Home made search engine</label>
           </Space>
         </div>
         <div className="col-6">
