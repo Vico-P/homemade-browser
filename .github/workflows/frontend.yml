@@ -1,5 +1,9 @@
 name: Building application front
 run-name: Checking potential code error in front-end application
+# To make each run in steps directly working on the frontend directory
+defaults:
+  run:
+    working-directory: ./homemade-serach-engine-app
 on:
   # When to run this action
   pull_request:
@@ -17,7 +21,4 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16.17.1"
-      - run: ls -a
-      - run: cd ./homemade-search-engine-app
-      - run: npm install
       - run: npm run lint
