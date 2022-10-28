@@ -1,5 +1,4 @@
-import { GoogleItems, SearchType } from "../types/google.types";
-import searchTextOnGoogle from "../utils";
+import { SearchType } from "../types/google.types";
 
 const resolvers = {
   Query: {
@@ -16,26 +15,6 @@ const resolvers = {
       },
       info: any
     ) => {
-      // TODO Uncomment this part of the code when project
-      // const response = await searchTextOnGoogle({
-      //   q: args.textToSearch,
-      //   key: context.key,
-      //   cx: context.searchEngineId,
-      //   searchType: args.searchType,
-      //   start: args.page * 10 - 9,
-      // });
-      // This is what we return to the subtype (here Result type of graphql) to process data in result type resolvers after
-      // In case of a list, each item will be resolved with the subtype resolvers before being returned to front
-      // return {
-      //   We are limited to 10 pages max like it is specified in the Google Search Engine API documentation
-      //   Link here -> https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list?apix_params=%7B%22q%22%3A%22Manga%22%2C%22start%22%3A99%7D
-      //   nbHits:
-      //     Number(response.searchInformation.totalResults) > 100
-      //       ? 100
-      //       : Number(response.searchInformation.totalResults),
-      //   results: response.items as GoogleItems[],
-      // };
-      // TODELETE
       if (args.searchType === SearchType.IMAGE) {
         return {
           nbHits: 100,
