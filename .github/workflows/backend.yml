@@ -1,0 +1,40 @@
+name: Building application back
+run-name: Checking if everything is good on the back-end side
+# To make each run in steps directly working on the frontend directory
+defaults:
+  run:
+    working-directory: homemade-search-engine-api
+on:
+  # When to run this action
+  pull_request:
+    branches:
+      - staging
+      - main
+# Different jobs it will have to do
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Using actions/checkout version to checkout/clone code
+      - uses: actions/checkout@v3
+      # Install the specified nodes version
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.17.1"
+      - name: Installing dependencies then starting lint of our sources
+        run: |
+          npm install
+          npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Using actions/checkout version to checkout/clone code
+      - uses: actions/checkout@v3
+      # Install the specified nodes version
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.17.1"
+      - name: Running build of server
+        run: |
+          npm install --omit=dev
+          npm run compile
