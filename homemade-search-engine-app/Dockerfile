@@ -11,9 +11,6 @@ COPY . .
 
 # Production build
 FROM node:16.17.1 as production
-# Putting an arg to say that it is a production image
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
 # Going to app directory of container
 WORKDIR /app
 # Copying files in app directory
