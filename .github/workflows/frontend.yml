@@ -1,5 +1,5 @@
 name: Building application front
-run-name: Check for if everyhting is good on the front endside
+run-name: Check for if everything is good on the front endside
 # To make each run in steps directly working on the frontend directory
 defaults:
   run:
