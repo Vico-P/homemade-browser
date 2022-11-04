@@ -19,6 +19,8 @@ COPY package.json tsconfig.json ./
 RUN npm install --omit=dev
 # Copying sources
 COPY . .
+# Deleting .env file
+RUN rm -rf ./.env*
 # Building the server and starting it
 CMD [ "npm","start" ]
 
