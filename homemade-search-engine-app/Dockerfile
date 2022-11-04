@@ -21,10 +21,8 @@ RUN npm i -g serve
 RUN npm install --omit=dev
 # Copying sources
 COPY . .
-# Checking for errors in code
-RUN npm run lint 
 # Building apps
 RUN npm run build
 # Starting apps
-RUN serve -s build
+CMD [ "serve", "-s", "build" ]
 

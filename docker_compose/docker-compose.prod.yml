@@ -1,7 +1,11 @@
 services:
   front-end:
     # Building image with Dockerfile in ./homemade-search-engine-app
-    build: ./homemade-search-engine-app
+    build:
+      # To point which Dockerfile from which directory we want to use for this container
+      context: ./homemade-search-engine-app
+      # To use the production build specified in Dockerfile
+      target: production
     ports:
       - "3000:3000"
     environment:
@@ -10,7 +14,11 @@ services:
       - REACT_APP_API_URL=${REACT_APP_API_URL}
   back-end:
     # Building image with Dockerfile in ./homemade-search-engine-api
-    build: ./homemade-search-engine-api
+    build:
+      # To point which Dockerfile from which directory we want to use for this container
+      context: ./homemade-search-engine-api
+      # To use the production build specified in Dockerfile
+      target: production
     ports:
       - "4000:4000"
     environment:

@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search-engine-app
+  labels:
+    app: homemade-search-engine-app
+spec:
+  # Number of pod running with this Deployment schema
+  replicas: 1
+  # To link the pod running in the node to this deployment we define the matching labels
+  selector:
+    matchLabels:
+      app: homemade-search-engine-app
+  # Configuration of the pod
+  template:
+    metadata:
+      labels:
+        app: homemade-search-engine-app
+      # Configuration of the container running inside the pod (It can have multiple container runnning in one pod but not a good practice)
+    spec:
+      containers:
+        - name: search-engine-app-container
+          # Image directly pull from docker hub
+          image: vicop/homemade-search-engine-app:latest
+          # Env variable for the container
+          env:
+            - name: REACT_APP_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  # Name of config map object
+                  name: app-api-config-map
+                  # Key of the data we want to use in the config map
+                  key: app-url
+          # Container ports
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  # By default it's ClusterIp but we need this service to be an external service so we define it as a NodePort Service
+  type: NodePort
+  selector:
+    # Using pod label to know where to forward request
+    app: homemade-search-engine-app
+  ports:
+    - protocol: TCP
+      # Service port
+      port: 3000
+      # Pod port
+      targetPort: 3000
+      # nodePort is to specify our service port in order to let it be accessible outside the cluster
+      nodePort: 30001
