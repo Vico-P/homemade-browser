@@ -19,8 +19,6 @@ COPY package.json tsconfig.json ./
 RUN npm install --omit=dev
 # Copying sources
 COPY . .
-# Checking for errors in code
-RUN npm run lint 
 # Building the server and starting it
-RUN npm start
+CMD [ "npm","start" ]
 

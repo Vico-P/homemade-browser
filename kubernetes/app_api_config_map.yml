@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-api-config-map
+data:
+  # getting our url from api-service declared in api_deployment.yml
+  app-url: api-service

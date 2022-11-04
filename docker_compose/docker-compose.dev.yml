@@ -2,11 +2,11 @@ services:
   front-end:
     # To tell which env values we need to take for the start of the container
     env_file:
-      - ./homemade-search-engine-app/.env
+      - ../homemade-search-engine-app/.env
     # Building image with Dockerfile in ./homemade-search-engine-app
     build:
       # To point which Dockerfile from which directory we want to use for this container
-      context: ./homemade-search-engine-app
+      context: ../homemade-search-engine-app
       # To use the development build specified in Dockerfile
       target: development
     # Start the front
@@ -21,11 +21,11 @@ services:
   back-end:
     # To tell which env values we need to take for the start of the container
     env_file:
-      - ./homemade-search-engine-api/.env
+      - ../homemade-search-engine-api/.env
     # Building image with Dockerfile in ./homemade-search-engine-api
     build:
       # To point which Dockerfile from which directory we want to use for this container
-      context: ./homemade-search-engine-api
+      context: ../homemade-search-engine-api
       # To use the development build specified in Dockerfile
       target: development
     # Start the server
