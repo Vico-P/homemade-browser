@@ -21,6 +21,8 @@ RUN npm i -g serve
 RUN npm install --omit=dev
 # Copying sources
 COPY . .
+# Deleting .env file
+RUN rm-rf ./.env*
 # Building apps
 RUN npm run build
 # Starting apps
