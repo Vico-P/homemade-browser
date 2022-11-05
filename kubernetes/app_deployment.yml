@@ -22,15 +22,6 @@ spec:
         - name: search-engine-app-container
           # Image directly pull from docker hub
           image: vicop/homemade-search-engine-app:latest
-          # Env variable for the container
-          env:
-            - name: REACT_APP_API_URL
-              valueFrom:
-                configMapKeyRef:
-                  # Name of config map object
-                  name: app-api-config-map
-                  # Key of the data we want to use in the config map
-                  key: app-url
           # Container ports
           ports:
             - containerPort: 3000
